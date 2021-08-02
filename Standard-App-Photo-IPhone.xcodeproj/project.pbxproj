@@ -11,6 +11,11 @@
 		AC023DE026B8780700A6E1E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DDF26B8780700A6E1E3 /* ViewController.swift */; };
 		AC023DE526B8780A00A6E1E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC023DE426B8780A00A6E1E3 /* Assets.xcassets */; };
 		AC023DE826B8780A00A6E1E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC023DE626B8780A00A6E1E3 /* LaunchScreen.storyboard */; };
+		AC023DF126B87E2500A6E1E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF026B87E2500A6E1E3 /* TabBarController.swift */; };
+		AC023DF326B87F5C00A6E1E3 /* MediaLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF226B87F5C00A6E1E3 /* MediaLibraryViewController.swift */; };
+		AC023DF526B87F6E00A6E1E3 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF426B87F6E00A6E1E3 /* ForYouViewController.swift */; };
+		AC023DF726B87FA300A6E1E3 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */; };
+		AC023DF926B87FB800A6E1E3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		AC023DE426B8780A00A6E1E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC023DE726B8780A00A6E1E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC023DE926B8780A00A6E1E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC023DF026B87E2500A6E1E3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AC023DF226B87F5C00A6E1E3 /* MediaLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryViewController.swift; sourceTree = "<group>"; };
+		AC023DF426B87F6E00A6E1E3 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
+		AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +62,7 @@
 		AC023DDA26B8780700A6E1E3 /* Standard-App-Photo-IPhone */ = {
 			isa = PBXGroup;
 			children = (
+				AC023DEF26B87E0C00A6E1E3 /* Class */,
 				AC023DDB26B8780700A6E1E3 /* AppDelegate.swift */,
 				AC023DDF26B8780700A6E1E3 /* ViewController.swift */,
 				AC023DE426B8780A00A6E1E3 /* Assets.xcassets */,
@@ -59,6 +70,18 @@
 				AC023DE926B8780A00A6E1E3 /* Info.plist */,
 			);
 			path = "Standard-App-Photo-IPhone";
+			sourceTree = "<group>";
+		};
+		AC023DEF26B87E0C00A6E1E3 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				AC023DF026B87E2500A6E1E3 /* TabBarController.swift */,
+				AC023DF226B87F5C00A6E1E3 /* MediaLibraryViewController.swift */,
+				AC023DF426B87F6E00A6E1E3 /* ForYouViewController.swift */,
+				AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */,
+				AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC023DF126B87E2500A6E1E3 /* TabBarController.swift in Sources */,
+				AC023DF926B87FB800A6E1E3 /* SearchViewController.swift in Sources */,
 				AC023DE026B8780700A6E1E3 /* ViewController.swift in Sources */,
+				AC023DF726B87FA300A6E1E3 /* AlbumsViewController.swift in Sources */,
+				AC023DF326B87F5C00A6E1E3 /* MediaLibraryViewController.swift in Sources */,
+				AC023DF526B87F6E00A6E1E3 /* ForYouViewController.swift in Sources */,
 				AC023DDC26B8780700A6E1E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
