@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC023DDC26B8780700A6E1E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DDB26B8780700A6E1E3 /* AppDelegate.swift */; };
-		AC023DE026B8780700A6E1E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DDF26B8780700A6E1E3 /* ViewController.swift */; };
 		AC023DE526B8780A00A6E1E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC023DE426B8780A00A6E1E3 /* Assets.xcassets */; };
 		AC023DE826B8780A00A6E1E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC023DE626B8780A00A6E1E3 /* LaunchScreen.storyboard */; };
 		AC023DF126B87E2500A6E1E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF026B87E2500A6E1E3 /* TabBarController.swift */; };
@@ -16,12 +15,14 @@
 		AC023DF526B87F6E00A6E1E3 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF426B87F6E00A6E1E3 /* ForYouViewController.swift */; };
 		AC023DF726B87FA300A6E1E3 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */; };
 		AC023DF926B87FB800A6E1E3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */; };
+		AC023DFC26B8850E00A6E1E3 /* CellMyAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023DFB26B8850E00A6E1E3 /* CellMyAlbums.swift */; };
+		AC023E2126BAF55200A6E1E3 /* HeaderCellMyAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023E2026BAF55200A6E1E3 /* HeaderCellMyAlbums.swift */; };
+		AC023E2B26C020A700A6E1E3 /* ModelCellMyAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC023E2A26C020A700A6E1E3 /* ModelCellMyAlbums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC023DD826B8780700A6E1E3 /* Standard-App-Photo-IPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Standard-App-Photo-IPhone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC023DDB26B8780700A6E1E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC023DDF26B8780700A6E1E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC023DE426B8780A00A6E1E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC023DE726B8780A00A6E1E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC023DE926B8780A00A6E1E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +31,9 @@
 		AC023DF426B87F6E00A6E1E3 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		AC023DFB26B8850E00A6E1E3 /* CellMyAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellMyAlbums.swift; sourceTree = "<group>"; };
+		AC023E2026BAF55200A6E1E3 /* HeaderCellMyAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellMyAlbums.swift; sourceTree = "<group>"; };
+		AC023E2A26C020A700A6E1E3 /* ModelCellMyAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCellMyAlbums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +66,11 @@
 		AC023DDA26B8780700A6E1E3 /* Standard-App-Photo-IPhone */ = {
 			isa = PBXGroup;
 			children = (
-				AC023DEF26B87E0C00A6E1E3 /* Class */,
+				AC023E2726C0206300A6E1E3 /* Model */,
+				AC023DFA26B884CC00A6E1E3 /* Cell */,
+				AC023E2C26C1992E00A6E1E3 /* Cell Header */,
+				AC023DEF26B87E0C00A6E1E3 /* ViewController */,
 				AC023DDB26B8780700A6E1E3 /* AppDelegate.swift */,
-				AC023DDF26B8780700A6E1E3 /* ViewController.swift */,
 				AC023DE426B8780A00A6E1E3 /* Assets.xcassets */,
 				AC023DE626B8780A00A6E1E3 /* LaunchScreen.storyboard */,
 				AC023DE926B8780A00A6E1E3 /* Info.plist */,
@@ -72,7 +78,7 @@
 			path = "Standard-App-Photo-IPhone";
 			sourceTree = "<group>";
 		};
-		AC023DEF26B87E0C00A6E1E3 /* Class */ = {
+		AC023DEF26B87E0C00A6E1E3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				AC023DF026B87E2500A6E1E3 /* TabBarController.swift */,
@@ -81,7 +87,31 @@
 				AC023DF626B87FA300A6E1E3 /* AlbumsViewController.swift */,
 				AC023DF826B87FB800A6E1E3 /* SearchViewController.swift */,
 			);
-			path = Class;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AC023DFA26B884CC00A6E1E3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AC023DFB26B8850E00A6E1E3 /* CellMyAlbums.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AC023E2726C0206300A6E1E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC023E2A26C020A700A6E1E3 /* ModelCellMyAlbums.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC023E2C26C1992E00A6E1E3 /* Cell Header */ = {
+			isa = PBXGroup;
+			children = (
+				AC023E2026BAF55200A6E1E3 /* HeaderCellMyAlbums.swift */,
+			);
+			path = "Cell Header";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,11 +185,13 @@
 			files = (
 				AC023DF126B87E2500A6E1E3 /* TabBarController.swift in Sources */,
 				AC023DF926B87FB800A6E1E3 /* SearchViewController.swift in Sources */,
-				AC023DE026B8780700A6E1E3 /* ViewController.swift in Sources */,
 				AC023DF726B87FA300A6E1E3 /* AlbumsViewController.swift in Sources */,
 				AC023DF326B87F5C00A6E1E3 /* MediaLibraryViewController.swift in Sources */,
 				AC023DF526B87F6E00A6E1E3 /* ForYouViewController.swift in Sources */,
 				AC023DDC26B8780700A6E1E3 /* AppDelegate.swift in Sources */,
+				AC023E2126BAF55200A6E1E3 /* HeaderCellMyAlbums.swift in Sources */,
+				AC023DFC26B8850E00A6E1E3 /* CellMyAlbums.swift in Sources */,
+				AC023E2B26C020A700A6E1E3 /* ModelCellMyAlbums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
