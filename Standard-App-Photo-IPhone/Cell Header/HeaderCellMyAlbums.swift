@@ -1,3 +1,10 @@
+//
+//  HeaderCellMyAlbums.swift
+//  Standard-App-Photo-IPhone
+//
+//  Created by Артем on 4.08.2021.
+//
+
 import UIKit
 
 class HeaderCellMyAlbums: UICollectionReusableView {

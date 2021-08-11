@@ -58,10 +58,20 @@ class AlbumsViewController: UIViewController {
                                 titleLabel: "Недавние",
                                 titleCount: "456")],
                  "Section1": [ModelCellMyAlbums(
-                                type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums6")!),
-                                titleLabel: "Недавние",
-                                titleCount: "221")],
+                                type: .cellPeopleAndPlaces,
+                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums1")!),
+                                titleLabel: "Люди",
+                                titleCount: "9 259"),
+                              ModelCellMyAlbums(
+                                type: .cellPeopleAndPlaces,
+                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums2")!),
+                                titleLabel: "Места",
+                                titleCount: "123"),
+                              ModelCellMyAlbums(
+                                type: .cellPeopleAndPlaces,
+                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums3")!),
+                                titleLabel: "Разное",
+                                titleCount: "654")],
                  "Section2": [ModelCellMyAlbums(
                                 type: .cellMyAlbums,
                                 titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums6")!),
@@ -91,14 +101,17 @@ class AlbumsViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
         
-        
-        collectionView.register(CellMyAlbums.self, forCellWithReuseIdentifier: "CellMyAlbums")
-        
-        collectionView.register(HeaderCellMyAlbums.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums")
-        
-        collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    
+    collectionView.register(CellMyAlbums.self, forCellWithReuseIdentifier: "CellMyAlbums")
+    collectionView.register(CellPeopleAndPlaces.self, forCellWithReuseIdentifier: "CellPeopleAndPlaces")
+    
+    collectionView.register(HeaderCellMyAlbums.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums")
+    
+    collectionView.register(HeaderCellPeopleAndPlaces.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellPeopleAndPlaces")
+    
+    collectionView.backgroundColor = .clear
+    collectionView.delegate = self
+    collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -144,6 +157,7 @@ extension AlbumsViewController {
             
             switch sectionNumber {
             case 0: return self.layoutSectionCellAlbumsViewCell()
+            case 1: return self.layoutSectionCellPeopleAndPlaces()
             default: return nil
             }
         }
@@ -153,11 +167,11 @@ extension AlbumsViewController {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(50))
-        
+
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,elementKind: "HeaderCellMyAlbums",
             alignment: .top)
-        
+
         sectionHeader.pinToVisibleBounds = true
         sectionHeader.zIndex = Int.max
         
@@ -183,6 +197,42 @@ extension AlbumsViewController {
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
+    
+    ///////////////////
+    private func layoutSectionCellPeopleAndPlaces() -> NSCollectionLayoutSection {
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(50))
+
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,elementKind: "HeaderCellPeopleAndPlaces",
+            alignment: .top)
+
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = Int.max
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(UIScreen.main.bounds.width * 0.5),
+            heightDimension: .absolute(UIScreen.main.bounds.width))
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                      leading: 0,
+                                                      bottom: 250,
+                                                      trailing: 0)
+        group.interItemSpacing = .fixed(60)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
 }
 
 // MARK: - UICollectionViewDelegate & Data Source
@@ -190,7 +240,7 @@ extension AlbumsViewController {
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -205,7 +255,7 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case .cellMyAlbums:
             return setupCellMyAlbums(for: indexPath, with: data)
         case .cellPeopleAndPlaces:
-            return setupCellMyAlbums(for: indexPath, with: data)
+            return setupCellPeopleAndPlaces(for: indexPath, with: data)
         case .cellTypesOfMedia:
             return setupCellMyAlbums(for: indexPath, with: data)
         }
@@ -221,12 +271,35 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    private  func setupCellPeopleAndPlaces(for indexPath: IndexPath, with data: ModelCellMyAlbums) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellPeopleAndPlaces", for: indexPath) as? CellPeopleAndPlaces else { return UICollectionViewCell() }
+        
+        cell.titleLabel.text = data.titleLabel
+        cell.titleImage = data.titleImage
+        cell.titleCount.text = data.titleCount
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let headerCellMyAlbums =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums", for: indexPath) as! HeaderCellMyAlbums
         
-        let header =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums", for: indexPath) as! HeaderCellMyAlbums
+        let headerCellPeopleAndPlaces =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellPeopleAndPlaces", for: indexPath) as! HeaderCellPeopleAndPlaces
         
-        header.configure()
-        return header
+        guard  let data = data["Section\(indexPath.section)"]?[indexPath.row] else { return UICollectionViewCell() }
+        
+        switch data.type {
+        case .cellMyAlbums:
+            headerCellMyAlbums.configure()
+            return headerCellMyAlbums
+        case .cellPeopleAndPlaces:
+            headerCellPeopleAndPlaces.configure()
+            return headerCellPeopleAndPlaces
+        case .cellTypesOfMedia:
+            return headerCellPeopleAndPlaces
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
