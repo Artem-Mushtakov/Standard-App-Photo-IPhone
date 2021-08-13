@@ -15,6 +15,8 @@ class MediaLibraryViewController: UIViewController {
         let label = UILabel()
         label.text = "Интерфейс ''Медиатеки'' (добавил для теста)"
         label.textColor = .systemGray
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     } ()
     
@@ -34,7 +36,9 @@ class MediaLibraryViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
     }
 }

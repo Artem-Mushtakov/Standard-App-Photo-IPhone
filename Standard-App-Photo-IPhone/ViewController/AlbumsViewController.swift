@@ -73,15 +73,45 @@ class AlbumsViewController: UIViewController {
                                 titleLabel: "Разное",
                                 titleCount: "654")],
                  "Section2": [ModelCellMyAlbums(
-                                type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums6")!),
-                                titleLabel: "Недавние",
-                                titleCount: "221"),
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "video")),
+                                titleLabel: "Видео",
+                                titleCount: "455"),
                               ModelCellMyAlbums(
-                                type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums6")!),
-                                titleLabel: "Недавние",
-                                titleCount: "221")],
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "person.crop.square")),
+                                titleLabel: "Селфи",
+                                titleCount: "177"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "livephoto")),
+                                titleLabel: "Фото Live Photos",
+                                titleCount: "810"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "square.stack.3d.forward.dottedline")),
+                                titleLabel: "Портреты",
+                                titleCount: "449"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "timelapse")),
+                                titleLabel: "Таймлапс",
+                                titleCount: "15"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "slowmo")),
+                                titleLabel: "Замедленно",
+                                titleCount: "9"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "square.on.square")),
+                                titleLabel: "Серии",
+                                titleCount: "8"),
+                              ModelCellMyAlbums(
+                                type: .cellTypesOfMedia,
+                                titleImage: UIImageView.init(image: UIImage(systemName: "doc.text.viewfinder")),
+                                titleLabel: "Снимки экрана",
+                                titleCount: "801")],
     ]
     
     // MARK: - Lifecycle Methods
@@ -95,23 +125,26 @@ class AlbumsViewController: UIViewController {
     
     //MARK: - Setup
     
-   private lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         
         let viewLayout = UICollectionViewFlowLayout()
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
         
-    
-    collectionView.register(CellMyAlbums.self, forCellWithReuseIdentifier: "CellMyAlbums")
-    collectionView.register(CellPeopleAndPlaces.self, forCellWithReuseIdentifier: "CellPeopleAndPlaces")
-    
-    collectionView.register(HeaderCellMyAlbums.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums")
-    
-    collectionView.register(HeaderCellPeopleAndPlaces.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellPeopleAndPlaces")
-    
-    collectionView.backgroundColor = .clear
-    collectionView.delegate = self
-    collectionView.dataSource = self
+        
+        collectionView.register(CellMyAlbums.self, forCellWithReuseIdentifier: "CellMyAlbums")
+        collectionView.register(CellPeopleAndPlaces.self, forCellWithReuseIdentifier: "CellPeopleAndPlaces")
+        collectionView.register(СellTypesOfMedia.self, forCellWithReuseIdentifier: "СellTypesOfMedia")
+        
+        collectionView.register(HeaderCellMyAlbums.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums")
+        
+        collectionView.register(HeaderCellPeopleAndPlaces.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellPeopleAndPlaces")
+        
+        collectionView.register(HeaderCellTypesOfMedia.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellTypesOfMedia")
+        
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -158,7 +191,9 @@ extension AlbumsViewController {
             switch sectionNumber {
             case 0: return self.layoutSectionCellAlbumsViewCell()
             case 1: return self.layoutSectionCellPeopleAndPlaces()
-            default: return nil
+            case 2: return self.layoutSectionСellTypesOfMedia()
+            default:
+                return self.layoutSectionCellAlbumsViewCell()
             }
         }
     }
@@ -167,11 +202,11 @@ extension AlbumsViewController {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(50))
-
+        
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,elementKind: "HeaderCellMyAlbums",
             alignment: .top)
-
+        
         sectionHeader.pinToVisibleBounds = true
         sectionHeader.zIndex = Int.max
         
@@ -198,16 +233,15 @@ extension AlbumsViewController {
         return section
     }
     
-    ///////////////////
     private func layoutSectionCellPeopleAndPlaces() -> NSCollectionLayoutSection {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                                 heightDimension: .absolute(50))
-
+        
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,elementKind: "HeaderCellPeopleAndPlaces",
             alignment: .top)
-
+        
         sectionHeader.pinToVisibleBounds = true
         sectionHeader.zIndex = Int.max
         
@@ -219,18 +253,51 @@ extension AlbumsViewController {
         
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(UIScreen.main.bounds.width * 0.5),
-            heightDimension: .absolute(UIScreen.main.bounds.width))
+            heightDimension: .absolute(215))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count:1)
         group.contentInsets = NSDirectionalEdgeInsets(top: 0,
                                                       leading: 0,
-                                                      bottom: 250,
+                                                      bottom: 60,
                                                       trailing: 0)
-        group.interItemSpacing = .fixed(60)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [sectionHeader]
+        return section
+    }
+    
+    private func layoutSectionСellTypesOfMedia() -> NSCollectionLayoutSection {
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                heightDimension: .absolute(35))
+        
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,elementKind: "HeaderСellTypesOfMedia",
+            alignment: .top)
+        
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = Int.max
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(UIScreen.main.bounds.width),
+            heightDimension: .absolute(35))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                      leading: 0,
+                                                      bottom: 0,
+                                                      trailing: 0)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [sectionHeader]
+        
         return section
     }
 }
@@ -240,7 +307,7 @@ extension AlbumsViewController {
 extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -257,7 +324,7 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case .cellPeopleAndPlaces:
             return setupCellPeopleAndPlaces(for: indexPath, with: data)
         case .cellTypesOfMedia:
-            return setupCellMyAlbums(for: indexPath, with: data)
+            return setupСellTypesOfMedia(for: indexPath, with: data)
         }
     }
     
@@ -281,11 +348,25 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    private  func setupСellTypesOfMedia(for indexPath: IndexPath, with data: ModelCellMyAlbums) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "СellTypesOfMedia", for: indexPath) as? СellTypesOfMedia else { return UICollectionViewCell() }
+        
+        cell.titleLabel.text = data.titleLabel
+        cell.titleImage = data.titleImage
+        cell.titleCount.text = data.titleCount
+        
+        
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
+        
         let headerCellMyAlbums =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellMyAlbums", for: indexPath) as! HeaderCellMyAlbums
         
         let headerCellPeopleAndPlaces =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellPeopleAndPlaces", for: indexPath) as! HeaderCellPeopleAndPlaces
+        
+        let headerСellTypesOfMedia =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCellTypesOfMedia", for: indexPath) as! HeaderCellTypesOfMedia
         
         guard  let data = data["Section\(indexPath.section)"]?[indexPath.row] else { return UICollectionViewCell() }
         
@@ -297,9 +378,10 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             headerCellPeopleAndPlaces.configure()
             return headerCellPeopleAndPlaces
         case .cellTypesOfMedia:
-            return headerCellPeopleAndPlaces
+            headerСellTypesOfMedia.configure()
+            return headerСellTypesOfMedia
         }
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
