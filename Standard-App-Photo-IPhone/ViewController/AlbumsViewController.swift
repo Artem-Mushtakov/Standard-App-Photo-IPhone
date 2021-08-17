@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum CellType {
-    case cellMyAlbums
-    case cellPeopleAndPlaces
-    case cellTypesOfMedia
-}
-
 class AlbumsViewController: UIViewController {
     
     // MARK: - Properties
@@ -24,32 +18,32 @@ class AlbumsViewController: UIViewController {
                                 titleCount: "9 259"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums2")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums2")!),
                                 titleLabel: "Избранное",
                                 titleCount: "123"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums3")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums3")!),
                                 titleLabel: "Instagram",
                                 titleCount: "654"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums4")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums4")!),
                                 titleLabel: "WhatsApp",
                                 titleCount: "14"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums5")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums5")!),
                                 titleLabel: "FaceApp",
                                 titleCount: "321"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums6")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums6")!),
                                 titleLabel: "Gradient",
                                 titleCount: "456"),
                               ModelCellMyAlbums(
                                 type: .cellMyAlbums,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums3")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums3")!),
                                 titleLabel: "Movavi Clips",
                                 titleCount: "321"),
                               ModelCellMyAlbums(
@@ -64,12 +58,12 @@ class AlbumsViewController: UIViewController {
                                 titleCount: "9 259"),
                               ModelCellMyAlbums(
                                 type: .cellPeopleAndPlaces,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums2")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums2")!),
                                 titleLabel: "Места",
                                 titleCount: "123"),
                               ModelCellMyAlbums(
                                 type: .cellPeopleAndPlaces,
-                                titleImage: UIImageView.init(image: UIImage(named: "imageMyAlbums3")!),
+                                titleImage: UIImageView.init(image: UIImage(named: "ImageMyAlbums3")!),
                                 titleLabel: "Разное",
                                 titleCount: "654")],
                  "Section2": [ModelCellMyAlbums(
@@ -120,7 +114,7 @@ class AlbumsViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupNavigationBar()
-        collectionView.collectionViewLayout = createCompositionalLayout() // ПОДПИСАЛИСЬ НА ТО, ЧТО ЛЭЙАТЫ БУДУТ РАЗНЫЕ
+        collectionView.collectionViewLayout = createCompositionalLayout()
     }
     
     //MARK: - Setup
