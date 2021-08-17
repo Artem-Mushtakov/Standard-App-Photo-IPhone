@@ -15,7 +15,7 @@ class HeaderCellPeopleAndPlaces: UICollectionReusableView {
         let label = UILabel()
         label.text = "Люди и места"
         label.textColor  = .white
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = MetricHeaderCellPeopleAndPlaces.labelFont
         label.textAlignment = .left
         return label
     }()
@@ -29,11 +29,25 @@ class HeaderCellPeopleAndPlaces: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
+        falseTranslatesAutoresizingMaskIntoConstraints()
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: MetricHeaderCellPeopleAndPlaces.labeleTopAnchorConstant),
+            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: MetricHeaderCellPeopleAndPlaces.labelLeadingAnchorConstant),
         ])
     }
+    
+    private func falseTranslatesAutoresizingMaskIntoConstraints() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+// MARK: - Metric
+
+struct MetricHeaderCellPeopleAndPlaces {
+    
+    static let labelFont: UIFont = .boldSystemFont(ofSize: 18)
+    
+    static let labeleTopAnchorConstant: CGFloat = 10
+    static let labelLeadingAnchorConstant: CGFloat = 5
 }

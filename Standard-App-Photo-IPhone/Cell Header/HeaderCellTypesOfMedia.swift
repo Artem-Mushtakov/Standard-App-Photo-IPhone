@@ -15,7 +15,7 @@ class HeaderCellTypesOfMedia: UICollectionReusableView {
         let label = UILabel()
         label.text = "Типы медиафайлов"
         label.textColor  = .white
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = MetricHeaderCellTypesOfMedia.labelFont
         label.textAlignment = .left
         return label
     }()
@@ -29,12 +29,25 @@ class HeaderCellTypesOfMedia: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
+        falseTranslatesAutoresizingMaskIntoConstraints()
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: MetricHeaderCellTypesOfMedia.labeleTopAnchorConstant),
+            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: MetricHeaderCellTypesOfMedia.labelLeadingAnchorConstant),
         ])
+    }
+    
+    private func falseTranslatesAutoresizingMaskIntoConstraints() {
+        label.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
+// MARK: - Metric
+
+struct MetricHeaderCellTypesOfMedia {
+    
+    static let labelFont: UIFont = .boldSystemFont(ofSize: 18)
+    
+    static let labeleTopAnchorConstant: CGFloat = 10
+    static let labelLeadingAnchorConstant: CGFloat = 5
+}

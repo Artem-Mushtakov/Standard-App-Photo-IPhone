@@ -27,21 +27,21 @@ class CellMyAlbums: UICollectionViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "system", size: 17)
+        label.font = MetricCellMyAlbums.labelFont
         label.textColor = .white
         return label
     }()
     
     lazy var titleCount: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "system", size: 17)
+        label.font = MetricCellMyAlbums.labelFont
         label.textColor = .gray
         return label
     }()
     
     lazy var titleImage: UIImageView = {
         let titleImage = UIImageView()
-        
+
         return titleImage
     } ()
 }
@@ -52,33 +52,56 @@ extension CellMyAlbums {
     
     private func setupUI() {
         
+        falseTranslatesAutoresizingMaskIntoConstraints()
+        
         self.contentView.addSubview(titleImage)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(titleCount)
-        
-        titleImage.translatesAutoresizingMaskIntoConstraints = false
+
         titleImage.clipsToBounds = true
         titleImage.layer.masksToBounds = true
         titleImage.layer.cornerRadius = 5
         titleImage.contentMode = UIView.ContentMode.scaleAspectFill
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleCount.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             
-            titleImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5),
+            titleImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: MetricCellMyAlbums.titleImageTopAnchorConstant),
             titleImage.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            titleImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
-            titleImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -5),
+            titleImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: MetricCellMyAlbums.titleImageLeadingAnchorConstant),
+            titleImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: MetricCellMyAlbums.titleImageTrailingAnchorConstant),
             
-            titleLabel.topAnchor.constraint(equalTo: titleImage.bottomAnchor, constant: 5),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
+            titleLabel.topAnchor.constraint(equalTo: titleImage.bottomAnchor, constant: MetricCellMyAlbums.titleLabelTopAnchorConstant),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: MetricCellMyAlbums.titleLabelLeadingAnchorConstant),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: MetricCellMyAlbums.titleLabelTrailingAnchorConstant),
             
-            titleCount.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            titleCount.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-            titleCount.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
+            titleCount.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: MetricCellMyAlbums.titleCountTopAnchorConstant),
+            titleCount.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: MetricCellMyAlbums.titleCountLeadingAnchorConstant),
+            titleCount.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: MetricCellMyAlbums.titleCountTrailingAnchorConstant),
         ])
     }
+    
+    private func falseTranslatesAutoresizingMaskIntoConstraints() {
+        titleImage.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleCount.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+// MARK: - Metric
+
+struct MetricCellMyAlbums {
+    
+    static let labelFont = UIFont(name: "system", size: 17)
+    
+    static let titleImageTopAnchorConstant: CGFloat = 5
+    static let titleImageLeadingAnchorConstant: CGFloat = 5
+    static let titleImageTrailingAnchorConstant: CGFloat = -5
+    
+    static let titleLabelTopAnchorConstant: CGFloat = 5
+    static let titleLabelLeadingAnchorConstant: CGFloat = 5
+    static let titleLabelTrailingAnchorConstant: CGFloat = 5
+    
+    static let titleCountTopAnchorConstant: CGFloat = 5
+    static let titleCountLeadingAnchorConstant: CGFloat = 5
+    static let titleCountTrailingAnchorConstant: CGFloat = 5
 }

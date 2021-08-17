@@ -8,7 +8,7 @@
 import UIKit
 
 struct ModelCellMyAlbums {
-    let type: CellType
+    let type: ModelCellType
     let titleImage: UIImageView
     let titleLabel: String
     let titleCount: String

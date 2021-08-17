@@ -15,7 +15,7 @@ class HeaderCellMyAlbums: UICollectionReusableView {
         let label = UILabel()
         label.text = "Мои альбомы"
         label.textColor  = .white
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = MetricHeaderCellMyAlbums.labelFont
         label.textAlignment = .left
         return label
     }()
@@ -44,15 +44,31 @@ class HeaderCellMyAlbums: UICollectionReusableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
+        falseTranslatesAutoresizingMaskIntoConstraints()
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 10),
-            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: MetricHeaderCellMyAlbums.labeleTopAnchorConstant),
+            label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: MetricHeaderCellMyAlbums.labelLeadingAnchorConstant),
             
             button.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,constant: -10)
+            button.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor,constant: MetricHeaderCellMyAlbums.buttonTrailingAnchorConstant)
         ])
     }
+    
+    private func falseTranslatesAutoresizingMaskIntoConstraints() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
+// MARK: - Metric
+
+struct MetricHeaderCellMyAlbums {
+    
+    static let labelFont: UIFont = .boldSystemFont(ofSize: 18)
+    
+    static let labeleTopAnchorConstant: CGFloat = 10
+    static let labelLeadingAnchorConstant: CGFloat = 5
+    
+    static let buttonTrailingAnchorConstant: CGFloat = -10
 }
